@@ -1,9 +1,33 @@
-// import "./styles.css";
+const X_CLASS = "x";
+const CIRCLE_CLASS = "circle";
 
-// document.getElementById("app").innerHTML = `
-// <h1 class="red">Hello Vanilla!</h1>
-// <div>
-//   We use Parcel to bundle this sandbox, you can find more info about Parcel
-//   <a href="https://parceljs.org" target="_blank" rel="noopener noreferrer">here</a>.
-// </div>
-// `;
+const cellElements = document.querySelectorAll("[data-cell]");
+let circleTurn;
+
+cellElements.forEach(cell => {
+  cell.addEventListener("click", handleClick, { once: true });
+});
+
+function handleClick(e) {
+  const cell = e.target;
+  // console.log(cell, e.target, e);
+
+  const currentClass = circleTurn ? CIRCLE_CLASS : X_CLASS;
+  // place mark
+  placeMark(cell, currentClass);
+
+  // check for win
+
+  // check for draw
+
+  // swap turns
+  swapTurns();
+}
+
+function placeMark(cell, currentClass) {
+  cell.classList.add(currentClass);
+}
+
+function swapTurns() {
+  circleTurn = !circleTurn;
+}
